@@ -16,7 +16,7 @@ class Image(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="image")
     name = models.ImageField(upload_to='uploads/')
     description = models.CharField(max_length=20)
-    tag = models.ForeignKey(Tag, on_delete=models.CASCADE, related_name="image", default=Tag.objects.get(pk=1).id)
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE, related_name="image")
 
     class Meta:
         ordering = ['description']
