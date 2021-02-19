@@ -1,0 +1,68 @@
+{% extends "pecs/layout.html" %}
+{% load static %}
+
+{% block title %}
+   - Edit
+{% endblock %}
+
+{% block body %}
+
+
+        <div class="div_scroll -flex flex-column align-content-center">
+            <h4>EDIT</h4>
+            Click on the Tag or Description to Edit or change. <br>
+            Once done, just click-out and the changes will be automatically saved.<br>
+            <div class="d-flex flex-wrap">
+                {% for pecs in images %}
+                    <div id="pecs_{{ pecs.id }}" class="" style="margin: 2px; padding: 10px; background-color: white;">
+                        <div style="background-color: white; text-align: center;">
+                            <div class="float-right">
+                                <button id="del_{{ pecs.id }}" type="button" name="{{ pecs.id }}" class="btn_play">
+                                    <img style="height: 30px;" src="{% static 'pecs/images/del.png' %}">
+                                </button>
+                            </div>
+                            <div class="d-flex justify-content-center"> 
+                                <div class="p-2">
+                                    <div class="pecs_img_frame d-flex justify-content-center">
+                                        <img class="pecs_img" src="/upload/{{ pecs.name }}">
+                                    </div>    
+                                </div>    
+                            </div>
+
+                            <div id="pecs_desc_{{ pecs.id }}" style="min-width: 100%;" class="pecs_desc">
+                                <input maxlength="20" class="form-control" type="text" value="{{ pecs.description | upper }}" disabled>
+                            </div>
+
+                            <div id="pecs_tag_{{ pecs.id }}">
+                                <select class="form-select">
+                                {% for tag in tags %}
+                                <option value="{{ tag.id }}"
+                                {% if pecs.tag.id == tag.id %}
+                                selected
+                                {% endif %}
+                                >{{tag.category}}</option>
+                                {% endfor %}    
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% empty %}
+                <div>
+                    <div class="p-2 -flex flex-column">
+                        <h5>NO PECS HERE</h5>
+                        <img class="pecs_img" src="{% static 'pecs/images/idk.jpg' %}" alt="dont know">
+                        <br>    
+                    </div>
+                    Please go to <a href="/upload">UPLOAD</a> to upload some PECS.
+                </div>
+
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <script src="{% static 'pecs/edit.js' %}"></script>
+{% endblock %}

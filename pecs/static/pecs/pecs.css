@@ -1,0 +1,262 @@
+html, body {
+    /*background-color: #E9E9E9;*/
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 1em;
+}
+
+.navbar {
+    background-color: darkcyan;
+}
+
+body{
+    background-color: skyblue;
+    height: 100vh;
+}
+
+main {
+    padding-top: 10px;
+}
+
+.div_scroll {
+    margin-top: -10px;
+    padding: 20px;
+}
+
+.user_form {   
+    max-width: 80%;
+    width: 600px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: whitesmoke;
+    color: darkslategray;
+    border-radius: 20px;
+}
+
+.div_strip {
+    height: 240px;
+}
+
+.iwant_view, .firstthen_view {
+    display: none; 
+    background-color: seagreen;
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+.div_cat {
+    clear: both; 
+    background-color: seagreen;
+}
+
+.cat, .active_cat, .strip, .active_strip {
+    /* border-top-left-radius: 10px; */
+    border-top-right-radius: 10px;
+    border: none;
+    outline: none;
+    margin-left: 2px;
+    padding: 5px 10px 5px 10px;
+}
+
+.cat, .strip {
+    background-color: whitesmoke;
+    color: gray
+}
+
+
+.strip:active, .strip:hover, .active_strip, .active_strip:focus, .active_strip:active {
+    border: none;
+    outline: none;
+    background-color: seagreen;
+    color: whitesmoke;
+}
+
+.cat:hover, .cat:active, .active_cat, .active_cat:active, .active_cat:focus {
+    border: none;
+    outline: none;
+    background-color: olivedrab;
+    color: whitesmoke;
+}
+
+.load_pecs, .div_pecs {
+    background-color: olivedrab; 
+    overflow: auto;
+}
+
+.div_pecs {
+    padding: 10px;
+}
+
+.div_pecs_inner{
+    position: relative;
+}
+
+.div_pecs_inner:hover {
+    background-color: lime;
+}
+
+.fave {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+}
+
+.fave_img {
+    width: 28px;
+}
+
+.pecs_strip, .pecs
+{
+    border: 3px solid black;
+}
+
+.pecs
+{
+    margin: 2px;
+    max-width: 140px;
+    height: 140px;
+    vertical-align: bottom;
+    background-color: white;
+    color: black;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px black;
+}
+
+.pecs:hover {
+    border: 3px solid lime;
+}
+
+.active_pecs {
+    border: 3px solid lime;
+}
+
+
+.pecs_img_frame {
+    clear: both; 
+    height: 80px;
+    width: 120px; 
+    object-fit: cover; 
+    overflow: hidden;
+}
+
+.pecs_img {
+    max-height: 100%;
+    max-width: 110px;
+}
+
+.pecs_desc, .pecs_text {
+    font-size: 15px; 
+    font-weight: bold;
+}
+
+.pecs_desc {
+    min-height: 40px;
+    max-width: 120px;
+    margin: 0px;
+}
+
+.tag_name {
+    font-size: large;
+}
+
+.tag_img {
+    margin-top: -5px;
+    height: 20px;
+    max-width: 24px;
+}
+
+.btn_play, .btn_play:focus{
+
+    display:block;
+    border: none;
+    outline: none;
+    background: none;
+    background-color: none;
+
+}
+
+.play
+{
+    width: 60px;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 480px), (max-height: 520px) {
+    
+    html {
+        font-size: 0.8em;
+    }
+
+    .div_scroll {
+        height: 80vh;
+    }
+
+    .div_strip {
+        height: 180px;
+    }
+    
+    .tag_name {
+        display: none;
+    }
+    
+    .fave {
+        top: 6px;
+        right: 2px;
+    }
+
+    .fave_img {
+        width: 20px;
+    }
+    
+    .div_pecs {
+        padding: 4px;
+    }
+
+    .pecs_strip, .pecs
+    {
+        border: 3px solid black;
+    }
+
+    .pecs
+    {   
+        margin: auto;
+        min-width: 100px;
+        height: 100px;
+    }
+    
+    .pecs:hover {
+        border: 3px solid lime;
+    }
+    
+    .active_pecs {
+        border: 3px solid lime;
+    }
+    
+    .pecs_img {
+        max-height: 100%;
+        max-width: 80px;
+    }
+    
+    .pecs_img_frame {
+        background-color: white;  
+        clear: both; 
+        height: 70px;
+        width: 80px; 
+        object-fit: cover; 
+        overflow: hidden;
+    }
+
+    .pecs_desc {
+        font-size: 11px; 
+        max-width: 90px;
+    }
+
+    .play {
+        width: 40px;
+    }
+ 
+
+}

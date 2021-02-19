@@ -1,0 +1,71 @@
+{% extends "pecs/layout.html" %}
+{% load static %}
+
+{% block title %}
+   - Upload
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="user_form">
+        <h4>UPLOAD PECS</h4>
+        
+        <form method="POST" action="{% url 'upload' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="p-2">
+                {{ form.name }}
+            </div>
+            <div class="d-flex align-self-start">
+                <div class="p-2">
+                    Description:
+                    {{ form.description }}
+                </div>
+                <div class="p-2">
+                    Tag:
+                    {{ form.tag }}
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <button id="upload" class="btn btn-info form-control" type="submit">Submit</button>
+            </div>
+
+        </form>
+
+        {% if image %}
+        Uploaded PECS:<br>
+        <div class="cat">
+            <span class="tag_name">{{ image.tag }}</span>
+        </div>
+        <div id="upload_pecs" class="pecs d-flex flex-column justify-content-center align-items-center">
+            <audio id="upload_play" src="upload/audio/{{ image.id }}.mp3" preload="none"></audio>
+            <div class="pecs_img_frame p-">
+                <img class="pecs_img" src="/upload/{{ image.name }}">
+            </div>
+            <div class="pecs_desc d-flex align-items-center">
+                <div>
+                    {{ image.description | upper }}
+                </div>
+            </div>
+        </div>
+        {% endif %}  
+    </div>
+
+    <script>
+
+        $(document).ready(function(){
+            $('.nav-item').removeClass('nav-item active').addClass('nav-item')
+            $('#upload').parent().removeClass('nav-item').addClass('nav-item active')
+        
+            $("#upload_pecs").click( function(){
+                $('#upload_play')[0].play();
+            });          
+        
+        });
+        
+    </script>
+
+
+{% endblock %}

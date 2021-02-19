@@ -1,0 +1,24 @@
+
+{% extends "pecs/layout.html" %}
+
+{% block body %}
+
+    <div class="div_scroll">
+        <div class="user_form">
+            <h4>CONVERT</h4>
+            <p>note: This Function is for admin use only.</p>
+            <form action="{% url 'convert' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group form-inline">
+                    <input class="form-control col-sm-4" type="text" name="text" placeholder="text">
+                    <input class="form-control col-sm-4" type="text" name="name" placeholder="file name">
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-info" type="submit" Value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,44 @@
+{% load static %}
+
+
+        <div id="div_pecs" class="div_pecs d-flex flex-wrap align-content-start">       
+
+            {% for pecs in images %}
+    
+            <div class="div_pecs_inner">
+    
+                <div class="fave">
+                    <button id="fave_{{ pecs.id }}" class="btn_play" action="fave()" value="{{ pecs.id }}">
+                        {% if user.is_authenticated %}
+                        {% if pecs.id in faves %}
+                        <img class="fave_img" src="{% static 'pecs/images/ff.png' %}">
+                        {% else %}        
+                        <img class="fave_img" src="{% static 'pecs/images/fa.png' %}">        
+                        {% endif %}    
+                        {% endif %}
+                    </button>
+                </div>
+    
+                <div id="pecs_{{ pecs.id}}" class="pecs d-flex flex-column justify-content-center align-items-center">
+                    <div class="pecs_img_frame p-">
+                            <img class="pecs_img" src="/upload/{{ pecs.name }}">
+                    </div>
+                    <div class="pecs_desc d-flex align-items-center">
+                        <div>
+                            {{ pecs.description | upper }}
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+
+            {% empty %}
+    
+                <div class="pecs_text">
+                    There are No PECS for this tag.
+                </div>
+    
+            {% endfor %}    
+        </div>
+    
+
