@@ -194,7 +194,7 @@
 
                 {% for tag in tags %}
                 <div>
-                    <audio id="{{ tag }}_play" src="upload/audio/{{ tag }}.mp3" preload="auto"></audio>
+                    <audio id="{{ tag }}_play" src="upload/audio/{{ tag | lower }}.mp3" preload="auto"></audio>
                     <button id="cat_{{ tag.id }}" class="cat" value="{{ tag.id }}" data-toggle="tooltip" data-placement="top" title="{{ tag }}">
                         <img class="tag_img" src="static/pecs/images/tag_{{ tag | lower }}.png">
                         <span class="tag_name">{{ tag }}</span>
