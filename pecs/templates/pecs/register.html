@@ -7,7 +7,7 @@
 <div class="div_scroll">
     <div class="user_form">
         <h2>Create an Account</h2>
-        Please do not use the same password you use for your other accounts.
+        <span class="text-danger">Please do not use the same password you use for your other accounts.</span>
         <br><br>
         <form action="{% url 'register' %}" method="post">
             {% csrf_token %}
@@ -30,7 +30,5 @@
     
     </div>
 </div>
-
-
 
 {% endblock %}

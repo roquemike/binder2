@@ -1,22 +1,19 @@
+#
+#
+#   POLARBURR#9201
+#   CS50W 2020 CAPSTONE
+
 import os
 import json
-from django.shortcuts import render
+from django.shortcuts import HttpResponse, HttpResponseRedirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from django.shortcuts import HttpResponse, HttpResponseRedirect, render
 from django.urls import reverse
-from django.views.decorators.csrf import csrf_exempt
-
-from .models import *
 from django.contrib import messages
-from .forms import ImageForm
-
 from gtts import gTTS
-
-
-LOGIN_URL = "pecs/login"
-# Create your views here.
+from .models import *
+from .forms import ImageForm
 
 def index(request):
     return render(request, "pecs/index.html", {
@@ -50,7 +47,6 @@ def pecs(request):
         'faves': faves,
     })
 
-@csrf_exempt
 @login_required(login_url='login')
 def fave(request):
     if request.method== 'PUT':
@@ -93,47 +89,58 @@ def upload(request):
         #file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
            
         messages.success(request, "File Uploaded Successfully")
-        form = ImageForm()
-        return render(request, "pecs/upload.html", {
-            "image": new_image,
-            "form": form,
-        })
+        request.session['uploaded'] = new_image.id
+        return HttpResponseRedirect(reverse("upload"))
 
     else:    
         form = ImageForm()
+        try:
+            if request.session['uploaded']:
+                image = Image.objects.get(pk=request.session['uploaded'])
+                del request.session['uploaded']
+        except: 
+            image = None
         return render(request, "pecs/upload.html", {
             "tags": Tag.objects.all(),
             "form": form,
+            "image": image
         })
 
-@csrf_exempt
 @login_required
 def edit(request):
-    images = Image.objects.filter(user=request.user.id)
     
+    images = Image.objects.filter(user=request.user.id)
+
     if request.method == 'PUT':
         data = json.loads(request.body)
         action=data['action']
         pecs_id=data['id']
         image = Image.objects.get(pk=pecs_id)
-        if action == 'desc':
-            convert_speech(data['update'], pecs_id)
-            image.description = data['update'].lower()
-            image.save()
 
-        elif action == 'tag':
-            tag=Tag.objects.get(pk__in = data['update'])
-            image.tag = tag      
-            image.save()
+        if image.user.id == request.user.id:
+            if action == 'desc':
+                convert_speech(data['update'], pecs_id)
+                image.description = data['update'].lower()
+                image.save()
+
+            elif action == 'tag':
+                tag=Tag.objects.get(pk__in = data['update'])
+                image.tag = tag      
+                image.save()
+            else:
+                image.delete()
+                os.remove(f'upload/{image.name}')
+                os.remove(f'upload/audio/{pecs_id}.mp3')
+
+            return JsonResponse({
+                "message": "success",
+                "count": images.count(),
+                    }, status=201) 
         else:
-            image.delete()
-            os.remove(f'upload/{image.name}')
-            os.remove(f'upload/audio/{pecs_id}.mp3')
-
-        return JsonResponse({
-            "message": "success",
-            "count": images.count(),
-                }, status=201) 
+            return JsonResponse({
+                "message": "unauthorized access",
+                "status": 401,
+                    }, status=401)
 
     return render(request, "pecs/edit.html", {
         'tags': Tag.objects.all(),

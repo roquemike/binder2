@@ -167,8 +167,8 @@ function clear_strips() {
     $('#then_in').html('<div class="pecs_img_frame d-flex"></div><div>&nbsp;</div>')
 
     active_box('then')
-    $("[id$='_play_pecs']").attr('src', "upload/audio/non.mp3");
-    $("[id$='_play_pecs_alt']").attr('src', "upload/audio/non.mp3");
+    $("[id$='_play_pecs']").attr('src', "static/pecs/audio/non.mp3");
+    $("[id$='_play_pecs_alt']").attr('src', "static/pecs/audio/non.mp3");
 }
 
 // function to change the active box on the strip
@@ -194,9 +194,14 @@ function active_box(id){
 }
 
 function fave(pecs_id) {
-
-    fetch("/fave", {
+    const csrftoken = getCookie('csrftoken');
+    const request = new Request(
+        "/fave",
+        {headers: {'X-CSRFToken': csrftoken}}
+    );
+    fetch(request, {
         method: 'PUT',
+        mode: 'same-origin',
         body: JSON.stringify({
             id: pecs_id,
         })
@@ -206,9 +211,9 @@ function fave(pecs_id) {
         //console.log(result)
         //console.log($('.active_cat').attr('id'))
         if (result.fave_stat == 'add') {
-            $('#fave_'+id).html('<img class="fave_img" src="static/pecs/images/ff.png">')
+            $('#fave_' + pecs_id).html('<img class="fave_img" src="static/pecs/images/ff.png">')
         } else {
-            $('#fave_'+id).html('<img class="fave_img" src="static/pecs/images/fa.png">')
+            $('#fave_' + pecs_id).html('<img class="fave_img" src="static/pecs/images/fa.png">')
         }
 
     })

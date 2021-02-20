@@ -8,57 +8,78 @@
 {% block body %}
 
     <div class="div_scroll">
+
         <h1 class="display-5">Online PECS binder</h1>
 
         <div class="faded_blue">
-            <h5>Hello and Welcome to the Online PECS Binder!</h5>
+            <h2>Hello and Welcome to the Online PECS Binder!</h2>
 
-            <div class="clearfix">
-
-                <img style="width: 150px; border: 1px solid black; margin: 10px" src="{% static 'pecs/hello.JPG' %}" alt="PECS">
-
-                <p style="padding: 10px">
-                    PECS stands for Picture Exchange Communication System.
-                    The PECS helps anyone with communication challenges, such as persons with Autism, communicate through the exchange of pictures. 
-                    The pictures which make up the vocublary of the individual are collected in a binder and the pictures are "exchanged"
-
-                </p>
-
-                <div>
-                    <img style="width: 280px; margin: 10px; border: 1px solid black;" src="{% static 'pecs/PECS_binder_3.JPG' %}" alt="PECS Binder">
-                    <p style="margin-left: 10px">
-                        A PECS Binder using an "I want" picture
+            <div>
+                <div class="clearfix">
+                    <div class="pecs_img_frame float-left">
+                        <img class="pecs_img"  src="{% static 'pecs/images/tag_people.png' %}" alt="PECS">
+    
+                    </div>
+                    <p>
+                        <h5>PECS</h5> stands for Picture Exchange Communication System.
+                        The PECS helps anyone with communication challenges, such as persons with Autism, communicate through the exchange of pictures. 
+                        The pictures which make up the vocublary of the individual are collected in a binder and the pictures are "exchanged"
                     </p>
                 </div>
-
-                <p style="padding: 10px">
-                    PECS have different phases and The Online Binder is designed for use in the 4th Phase,
-                    where we are able to use an “I want” picture followed by a picture of the item being requested.
-                    Learn more about PECS from Pyramid Educational Consultants who developed the PECS -
-                    <br><a href="https://pecs.com/picture-exchange-communication-system-pecs/">https://pecs.com/picture-exchange-communication-system-pecs/</a>
+                <div class="float-md-right">
+                    <img style="width: 280px; margin: 10px; border: 1px solid black;" src="{% static 'pecs/images/PECS_binder_3.JPG' %}" alt="PECS Binder">
+                    <p style="margin-left: 10px">
+                        An example of a PECS binder
+                    </p>
+                </div>
+                <p>
+                    <h5>PECS Phase IV</h5>
+                    The Online Binder is designed for use in the 4th Phase of the PECS
+                    where an individual will use an “I want” picture followed by a picture of the item being requested.
                 </p>
 
                 <p>
                     <h5>Register for additional features!</h5>
-                    The Application is free for use without the need to register.
-                    <br>But if you register, you will get all these neat features:
+                    If you register for an account you will be able to take advantage of a few additional features:
                     <ul>
-                        <li>Upload personalized PECS only available to you</li>
-                        <li>Tag PECS to a personalized favorite tab for easy access</li>
+                        <li>Upload and Edit personalized PECS</li>
+                        <li>Add PECS to a personalized favorite tab</li>
                     </ul>
-                </p>
-
-                <p>
-                    <h5>Resources</h5>
-                    The applications used free images available in the internet for PECS.
                 </p>
 
             </div>
 
             <div>
                 <p>
+                    <h2>Quick Guide</h5>
+
+                        <img class="img-fluid" src="{% static 'pecs/images/layout.png' %}">
+                    <ul>
+                        <h5>Strips</h5>
+                        Switch between I WANT or FIRST...THEN sentence structure.<br>
+                        Choose a PECS to complete the sentence structure then <br>
+                        click/tap the PECS on the strip one at a time to play, or <br>
+                        click/tap the play button to play the whole sentence Structure.    
+
+                    </ul>
+                    <ul>
+                        <h5>Tabs</h5>
+                        Switch between the Tabs to show the PECS for the chosen category.<br>
+                        Click/Tap on a PECS to populate and complete the Strip with the chosen PECS.
+                    </ul>
+                </p>
+            </div>
+            <p>
+                <h5>Resources</h5>
+                The applications used images that have been googled as free from the internet .<br>
+                Learn more about PECS from Pyramid Educational Consultants who developed the PECS <br>
+                <a href="https://pecs.com/picture-exchange-communication-system-pecs/">https://pecs.com/picture-exchange-communication-system-pecs/</a>
+
+            </p>
+            <div>
+                <p>
                     <h5></h5>
-                    This application is created for CS50X Final Project and subsequently improved for the CS50W Fonal Project.
+                    This application is created for the CS50W 2020 Final Project - Capstone.
                     <br>For Comments or Suggestions please contact:
                     <ul>
                         <li>email: polar.burr09@gmail.com</li>
@@ -70,14 +91,6 @@
         </div>
     </div>
 
-        <script>
-
-            $(document).ready(function(){
-                $('.nav-item').removeClass('nav-item active').addClass('nav-item')
-                $('#about').parent().removeClass('nav-item').addClass('nav-item active')
-            });
-
-        </script>
-
+    <script src="{% static 'pecs/scripts/about.js' %}"></script>
 
 {% endblock %}

@@ -240,8 +240,7 @@ main {
         max-width: 80px;
     }
     
-    .pecs_img_frame {
-        background-color: white;  
+    .pecs_img_frame { 
         clear: both; 
         height: 70px;
         width: 80px; 

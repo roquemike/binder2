@@ -25,7 +25,7 @@
 
         
         <link href="{% static 'pecs/favicon.ico' %}" rel="icon">
-        <link rel="stylesheet" href="{% static 'pecs/pecs.css' %}" >
+        <link rel="stylesheet" href="{% static 'pecs/scripts/pecs.css' %}" >
 
         <title>Online PECS Binder{% block title %}{% endblock %}</title>
 
@@ -98,13 +98,7 @@
             {% block body %}{% endblock %}
         </main>
         
-        <script>
-                $('#message').slideDown('fast', function() {
-                    window.setTimeout( function() {
-                        $('#message').slideUp();
-                    }, 800);
-                });
-        </script>
+        <script src="{% static 'pecs/scripts/layout.js' %}"></script>
 
     </body>
 </html>

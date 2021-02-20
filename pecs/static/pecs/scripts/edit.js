@@ -45,9 +45,14 @@ $(document).ready(function(){
 });
 
 function pecs_edit(action, update, pecs_id){
-
-    fetch("/edit", {
+    const csrftoken = getCookie('csrftoken');
+    const request = new Request(
+        "/edit",
+        {headers: {'X-CSRFToken': csrftoken}}
+    );
+    fetch(request, {
         method: 'PUT',
+        mode: 'same-origin',
         body: JSON.stringify({
             id: pecs_id[0],
             action: action,
@@ -56,10 +61,12 @@ function pecs_edit(action, update, pecs_id){
     })
     .then(response => response.json())
     .then(result => {
-        // console.log(result)
-        if (result.count == 0) {
+        console.log(result)
+        if (result.status == 401) {
+            window.location = "/"
+        } else if (result.count == 0) {
             window.location = "/edit"
-        } else if (action == 'desc'){
+        } else if (action == 'desc') {
             $('#pecs_desc_' + pecs_id[0]).find('input').val(update.toUpperCase())
         }
     })

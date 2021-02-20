@@ -82,9 +82,9 @@
                     <div class="p-2">
                         <div class="d-flex flex-column align-items-center">
                             <div>
-                                <audio id="iwant_play" src="upload/audio/I want.mp3" preload="auto"></audio>
-                                <audio id="iwant_play_alt" src="upload/audio/I want.mp3" preload="auto"></audio>
-                                <audio id="iwant_play_pecs" class="active_audio" src="upload/audio/non.mp3" preload="none"></audio>
+                                <audio id="iwant_play" src="{% static 'pecs/audio/I want.mp3' %}" preload="auto"></audio>
+                                <audio id="iwant_play_alt" src="{% static 'pecs/audio/I want.mp3' %}" preload="auto"></audio>
+                                <audio id="iwant_play_pecs" class="active_audio" src="{% static 'pecs/audio/non.mp3' %}" preload="none"></audio>
                                 <button class="btn_play" type="button" onclick="play_iwant()" data-toggle="tooltip" data-placement="top" title="play">
                                     <img class="play" alt="play" src="{% static 'pecs/images/play.png' %}">
                                 </button>    
@@ -107,7 +107,7 @@
     ###########################################################################################
     -->
             <div id="firstthen_view" class="firstthen_view">
-                <audio id="firstthen_play" src="upload/audio/firstthen.mp3" preload="auto"></audio>
+                <audio id="firstthen_play" src="{% static 'pecs/audio/firstthen.mp3' %}" preload="auto"></audio>
                 <div class="d-flex align-items-center">
                     
                     <div class="p-2">                      
@@ -146,15 +146,15 @@
                         <div class="d-flex flex-column">
         
                             <div>    
-                                <audio id="first_play" src="upload/audio/first.mp3" preload="auto"></audio>
-                                <audio id="first_play_pecs" src="upload/audio/non.mp3" preload="none"></audio>
-                                <audio id="then_play" src="upload/audio/then.mp3" preload="auto"></audio>
-                                <audio id="then_play_pecs" class="active_audio" src="upload/audio/non.mp3" preload="none"></audio>
+                                <audio id="first_play" src="{% static 'pecs/audio/first.mp3' %}" preload="auto"></audio>
+                                <audio id="first_play_pecs" src="{% static 'pecs/audio/non.mp3' %}" preload="none"></audio>
+                                <audio id="then_play" src="{% static 'pecs/audio/then.mp3' %}" preload="auto"></audio>
+                                <audio id="then_play_pecs" class="active_audio" src="{% static 'pecs/audio/non.mp3' %}" preload="none"></audio>
     
-                                <audio id="first_play_alt" src="upload/audio/first.mp3" preload="auto"></audio>
-                                <audio id="first_play_pecs_alt" src="upload/audio/non.mp3" preload="none"></audio>
-                                <audio id="then_play_alt" src="upload/audio/then.mp3" preload="auto"></audio>
-                                <audio id="then_play_pecs_alt" class="active_audio" src="upload/audio/non.mp3" preload="none"></audio>
+                                <audio id="first_play_alt" src="{% static 'pecs/audio/first.mp3' %}" preload="auto"></audio>
+                                <audio id="first_play_pecs_alt" src="{% static 'pecs/audio/non.mp3' %}" preload="none"></audio>
+                                <audio id="then_play_alt" src="{% static 'pecs/audio/then.mp3' %}" preload="auto"></audio>
+                                <audio id="then_play_pecs_alt" class="active_audio" src="{% static 'pecs/audio/non.mp3' %}" preload="none"></audio>
                                 
                                 <button class="btn_play" type="button" onclick="play_firstthen()" data-toggle="tooltip" data-placement="top" title="play">
                                     <img class="play" alt="play" src="{% static 'pecs/images/play.png' %}">
@@ -185,7 +185,7 @@
             <div class="d-flex">
 
                 <div>
-                    <audio id="all_play" src="upload/audio/all.mp3" preload="auto"></audio>
+                    <audio id="all_play" src="{% static 'pecs/audio/all.mp3' %}" preload="auto"></audio>
                     <button id="cat_0" class="active_cat" value="All" data-toggle="tooltip" data-placement="top" title="All">
                         <img class="tag_img" src="static/pecs/images/tag_all.png">
                         <span class="tag_name">All</span>
@@ -194,7 +194,7 @@
 
                 {% for tag in tags %}
                 <div>
-                    <audio id="{{ tag }}_play" src="upload/audio/{{ tag | lower }}.mp3" preload="auto"></audio>
+                    <audio id="{{ tag }}_play" src="static/pecs/audio/{{ tag | lower }}.mp3" preload="auto"></audio>
                     <button id="cat_{{ tag.id }}" class="cat" value="{{ tag.id }}" data-toggle="tooltip" data-placement="top" title="{{ tag }}">
                         <img class="tag_img" src="static/pecs/images/tag_{{ tag | lower }}.png">
                         <span class="tag_name">{{ tag }}</span>
@@ -204,9 +204,9 @@
 
                 {% if user.is_authenticated %}
                 <div>
-                    <audio id="faves_play" src="upload/audio/faves.mp3" preload="auto"></audio>
+                    <audio id="faves_play" src="{% static 'pecs/audio/faves.mp3' %}" preload="auto"></audio>
                     <button id="cat_99" class="cat" value="Faves" data-toggle="tooltip" data-placement="top" title="Fave"> 
-                        <img class="tag_img" src="static/pecs/images/tag_favorites.png">
+                        <img class="tag_img" src="{% static 'pecs/images/tag_favorites.png' %}">
                         <span class="tag_name">Faves</span>
                     </button>
                 </div>
@@ -233,7 +233,7 @@
 
     <div id="load_pecs" class="load_pecs"></div>
     
-    <script src="{% static 'pecs/index.js' %}"></script>
+    <script src="{% static 'pecs/scripts/index.js' %}"></script>
 
 
 {% endblock %}
