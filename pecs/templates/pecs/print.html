@@ -1,0 +1,50 @@
+{% extends "pecs/layout.html" %}
+{% load static %}
+
+{% block title %}
+   - Print
+{% endblock %}
+
+
+{% block body %}
+
+<div class="div_scroll">
+
+    <div class="d-print-none">
+        <h4>PRINT PECS </h4> 
+        <button type="button" class="btn btn-info btn-sm" onclick="select_all()">Select All</button>
+        <button type="button" class="btn btn-info btn-sm" onclick="select_none()">Select None</button>
+        <button class="btn btn-info btn-sm" id="size" onclick="change_size()">Toggle PECS Size <span id="pecs_size">[2x2]</span></button>
+        <button class="btn btn-success btn-sm" id="s_print" onclick="window.print();">Print</button>
+
+    </div>
+
+    <br>
+    <div id="div_pecs" style="display: table" class="print_page">       
+
+        {% for pecs in images %}
+        <div id="p_pecs_{{ pecs.id }}" style="display: inline-block; vertical-align: top;" class="div_pecs_inner d-print-none">
+            <div style="position: absolute; float: left; margin-left: 28px;" class="d-print-none">
+                <input style="height: 20px; width: 20px;" class="form-check-input" type="checkbox" value="{{ pecs.id }}">
+            </div>
+            <div id="pecs_contents_{{ pecs.id}}" class="p_pecs_x2 d-flex flex-column justify-content-center">
+                <div class="p-2">
+                    <div id="pecs_frame_{{ pecs.id }}" class="p_pecs_frame_x2 d-flex justify-content-center align-items-center">
+
+                            <img id="pecs_img_{{ pecs.id }}" class="p_pecs_img_x2" src="/upload/{{ pecs.name }}">
+
+                    </div>    
+                </div>
+                <div id="pecs_desc_{{ pecs.id }}" class="p_pecs_desc_x2 d-flex justify-content-center align-items-center">
+                    {{ pecs.description | upper }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}    
+    </div>
+</div>
+
+
+<script src="{% static 'pecs/scripts/print.js' %}"></script>
+
+{% endblock %}

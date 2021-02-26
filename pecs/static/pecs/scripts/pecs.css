@@ -259,3 +259,70 @@ main {
  
 
 }
+
+
+
+.p_pecs_x1, .p_pecs_x2 {
+    border: 1px solid black; 
+    text-align: center; 
+    background-color: white; 
+    margin: 1px;
+}
+
+.p_pecs_frame_x1, .p_pecs_frame_x2 {
+    object-fit: cover;
+    overflow:hidden
+}
+
+.p_pecs_x2 {
+    height: 2in; 
+    width: 2in; 
+}
+
+.p_pecs_x1 {
+    height: 1in; 
+    width: 1in; 
+}
+
+.p_pecs_frame_x2 {
+    
+    width: 1.8in; 
+    height: 1.4in;
+}
+
+.p_pecs_img_x2 {
+    max-width: 1.8in; 
+    max-height: 1.4in;
+}
+
+.p_pecs_frame_x1 {
+    width: 0.8in; 
+    height: 0.6in;
+}
+
+.p_pecs_img_x1 {
+    max-width: 0.8in; 
+    max-height: 0.6in;
+}
+
+.p_pecs_desc_x2 {
+    font-size: 22px
+} 
+
+.p_pecs_desc_x1 {
+    font-size: 14px
+} 
+
+@media print {  
+    @page {
+      size: letter landscape;
+      margin: 0.25in;
+
+    }
+    .print_page {
+
+        transform-origin: top left;
+    }
+  }
+
+

@@ -11,6 +11,7 @@ urlpatterns = [
     path("fave", views.fave, name="fave"),
     path("upload", views.upload, name="upload"),
     path("edit", views.edit, name="edit"),
+    path("print_pecs", views.print_pecs, name="print_pecs"),
     path("convert", views.convert, name="convert"),
     
     

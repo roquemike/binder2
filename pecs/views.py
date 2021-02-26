@@ -147,6 +147,12 @@ def edit(request):
         'images': images,
     })
 
+def print_pecs(request):
+    return render(request, "pecs/print.html", {
+        'tags': Tag.objects.all(),
+        'images': Image.objects.filter(user__in={2, request.user.id}),
+    })    
+
 @login_required
 def convert(request):
 
